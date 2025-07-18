@@ -1,0 +1,154 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <!-- Stats Section -->
+  <div class="row mb-5 mt-4">
+    <div class="col-md-4 mb-3">
+      <div class="card text-center p-3">
+        <h3 class="mb-1"><%= allSongs.length %></h3>
+        <p class="text-muted mb-0">Total Songs</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div class="card text-center p-3">
+        <h3 class="mb-1"><%= topGenres.length %></h3>
+        <p class="text-muted mb-0">Genres</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div class="card text-center p-3">
+        <h3 class="mb-1">
+          <% if (allSongs.length > 0) { %>
+            <%= (allSongs.reduce((sum, song) => sum + parseInt(song.rating), 0) / allSongs.length).toFixed(1) %>
+          <% } else { %>
+            0
+          <% } %>
+        </h3>
+        <p class="text-muted mb-0">Avg Rating</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Genres -->
+  <h2 class="mb-3">
+    <i class="fas fa-tags me-2"></i>Top Genres
+  </h2>
+  <div class="d-flex flex-wrap mb-4">
+    <% topGenres.forEach(g => { %>
+      <span class="genre-pill me-2 mb-2">
+        <%= g.genre %> (<%= g.count %>)
+      </span>
+    <% }) %>
+  </div>
+
+  <!-- Top 5 Songs -->
+  <h2 class="mb-3">
+    <i class="fas fa-star me-2"></i>Top 5 Songs
+  </h2>
+  <div class="row mb-5">
+    <% topSongs.forEach(song => { %>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+        <div class="card song-card h-100">
+          
+          <% if (song.cover_url) { %>
+            <img src="<%= song.cover_url %>" class="card-img-top" alt="<%= song.title %> cover">
+          <% } else { %>
+            <div class="card-img-top d-flex align-items-center justify-content-center bg-secondary" style="height: 180px;">
+              <i class="fas fa-music fa-3x text-muted"></i>
+            </div>
+          <% } %>
+          <div class="card-body p-2 text-center">
+            <h6 class="card-title mb-1 text-white" style="font-size: 0.9rem;">
+              <%= song.title %>
+            </h6>
+            <p class="text-muted mb-1" style="font-size: 0.8rem;"><%= song.artist %></p>
+            <div class="rating-stars mb-1">
+              <% for(let i = 1; i <= 5; i++) { %>
+                <% if(i <= Math.round(song.rating / 2)) { %>
+                  <i class="fas fa-star"></i>
+                <% } else { %>
+                  <i class="far fa-star"></i>
+                <% } %>
+              <% } %>
+            </div>
+            <% if (song.genre) { %>
+              <span class="genre-pill" style="font-size: 0.7rem;"><%= song.genre %></span>
+            <% } %>
+            <% if (song.spotify_link) { %>
+              <div class="mt-2">
+                <a href="<%= song.spotify_link %>" class="btn btn-sm btn-success" target="_blank">
+                  <i class="fab fa-spotify"></i>
+                </a>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <!-- All Songs Table -->
+  <h2 class="mb-3">
+    <i class="fas fa-list me-2"></i>All Songs
+  </h2>
+  <div class="table-responsive">
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Artist</th>
+          <th>Genre</th>
+          <th>Rating</th>
+          <th>Spotify</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% allSongs.forEach((song, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= song.title %></td>
+            <td><%= song.artist %></td>
+            <td>
+              <% if (song.genre) { %>
+                <span class="genre-pill"><%= song.genre %></span>
+              <% } %>
+            </td>
+            <td>
+              <div class="rating-stars">
+                <% for(let i = 1; i <= 5; i++) { %>
+                  <% if(i <= Math.round(song.rating / 2)) { %>
+                    <i class="fas fa-star"></i>
+                  <% } else { %>
+                    <i class="far fa-star"></i>
+                  <% } %>
+                <% } %>
+              </div>
+            </td>
+            <td>
+              <% if (song.spotify_link) { %>
+                <a href="<%= song.spotify_link %>" class="btn btn-sm btn-success" target="_blank">
+                  <i class="fab fa-spotify me-1"></i>Play
+                </a>
+              <% } else { %>
+                <span class="text-muted">N/A</span>
+              <% } %>
+            </td>
+            <td>
+              <form action="/delete/<%= song.id %>" method="POST" 
+                    onsubmit="return confirm('Are you sure you want to delete this song?')" 
+                    style="display: inline;">
+                <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete song">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

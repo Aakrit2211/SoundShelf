@@ -1,0 +1,47 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <div class="col-lg-6 col-md-8">
+      <div class="card p-4">
+        <h3 class="text-center mb-4">
+          <i class="fas fa-plus-circle me-2"></i>Add a New Song
+        </h3>
+        
+        <form action="/add" method="POST">
+          <div class="mb-3">
+            <label class="form-label">
+              <i class="fas fa-music me-2"></i>Song Title
+            </label>
+            <input type="text" class="form-control" name="title" placeholder="Enter song title" required>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">
+              <i class="fas fa-user me-2"></i>Artist
+            </label>
+            <input type="text" class="form-control" name="artist" placeholder="Enter artist name" required>
+          </div>
+          
+          <div class="mb-4">
+            <label class="form-label">
+              <i class="fas fa-star me-2"></i>Rating (1-10)
+            </label>
+            <input type="number" class="form-control" name="rating" min="1" max="10" placeholder="Rate from 1 to 10" required>
+            <div class="form-text text-muted mt-2">
+              <i class="fas fa-info-circle me-1"></i>Rate this song from 1 (poor) to 10 (excellent)
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg px-5">
+              <i class="fas fa-plus me-2"></i>Add Song to Library
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

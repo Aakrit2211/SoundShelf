@@ -1,0 +1,298 @@
+/* Color Variables */
+:root {
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #2a2a2a;
+  --bg-tertiary: #353535;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #888888;
+  --accent-blue: #4a90e2;
+  --accent-green: #1db954;
+  --border-color: #404040;
+  --hover-bg: #3a3a3a;
+}
+
+/* Base Styles */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+}
+
+.navbar-brand {
+  color: var(--text-primary) !important;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-blue) !important;
+  background-color: var(--hover-bg);
+}
+
+/* Cards */
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--accent-blue);
+  box-shadow: 0 4px 20px rgba(74, 144, 226, 0.15);
+  transform: translateY(-2px);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  font-weight: 500;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #357abd;
+  border-color: #357abd;
+  transform: translateY(-1px);
+}
+
+.btn-success {
+  background-color: var(--accent-green);
+  border-color: var(--accent-green);
+  font-weight: 500;
+}
+
+.btn-success:hover {
+  background-color: #17a44a;
+  border-color: #17a44a;
+}
+
+.btn-outline-light {
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+.btn-outline-light:hover {
+  background-color: var(--hover-bg);
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
+}
+
+/* Forms */
+.form-control {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  background-color: var(--bg-tertiary);
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+.form-label {
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* Tables */
+.table-dark {
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table-dark td, .table-dark th {
+  border-color: var(--border-color);
+  padding: 1rem;
+}
+
+.table-dark th {
+  background-color: var(--bg-tertiary);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.table-hover tbody tr:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Genre Pills */
+.genre-pill {
+  background-color: var(--accent-blue);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0.2rem;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.genre-pill:hover {
+  background-color: #357abd;
+  transform: translateY(-1px);
+}
+
+/* Song Cards */
+.song-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.song-card:hover {
+  border-color: var(--accent-blue);
+  box-shadow: 0 4px 20px rgba(74, 144, 226, 0.15);
+  transform: translateY(-3px);
+}
+
+.song-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.song-card .card-body {
+  padding: 1rem;
+}
+
+/* Stats Cards */
+.stats-card {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+  border-color: var(--accent-blue);
+  box-shadow: 0 4px 20px rgba(74, 144, 226, 0.1);
+}
+
+.stats-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  margin-bottom: 0.5rem;
+}
+
+.stats-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+/* Rating Stars */
+.rating-stars {
+  color: #ffd700;
+  font-size: 1.1rem;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  margin-top: 4rem;
+  padding: 2rem 0;
+}
+
+/* Links */
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #357abd;
+}
+
+/* Text Colors */
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.text-light {
+  color: var(--text-secondary) !important;
+}
+
+.text-white {
+  color: var(--text-primary) !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Custom Utilities */
+.bg-gradient {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+}
+
+.border-custom {
+  border-color: var(--border-color) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stats-number {
+    font-size: 2rem;
+  }
+  
+  .song-card img {
+    height: 150px;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+}
