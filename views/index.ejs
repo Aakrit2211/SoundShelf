@@ -1,8 +1,8 @@
 <%- include('partials/header') %>
 
-<div class="container">
+<div class="container ">
   <!-- Stats Section -->
-  <div class="row mb-5 mt-4">
+  <div class="row mb-5 mt-4 d-flex justify-content-center">
     <div class="col-md-4 mb-3">
       <div class="card text-center p-3">
         <h3 class="mb-1"><%= allSongs.length %></h3>
@@ -12,21 +12,16 @@
     <div class="col-md-4 mb-3">
       <div class="card text-center p-3">
         <h3 class="mb-1"><%= topGenres.length %></h3>
-        <p class="text-muted mb-0">Genres</p>
+        <p class="text-muted mb-0">Total Genres</p>
       </div>
     </div>
     <div class="col-md-4 mb-3">
       <div class="card text-center p-3">
-        <h3 class="mb-1">
-          <% if (allSongs.length > 0) { %>
-            <%= (allSongs.reduce((sum, song) => sum + parseInt(song.rating), 0) / allSongs.length).toFixed(1) %>
-          <% } else { %>
-            0
-          <% } %>
-        </h3>
-        <p class="text-muted mb-0">Avg Rating</p>
+        <h3 class="mb-1"><%= artists%></h3>
+        <p class="text-muted mb-0">Total Artist</p>
       </div>
     </div>
+    
   </div>
 
   <!-- Top Genres -->
@@ -63,13 +58,7 @@
             </h6>
             <p class="text-muted mb-1" style="font-size: 0.8rem;"><%= song.artist %></p>
             <div class="rating-stars mb-1">
-              <% for(let i = 1; i <= 5; i++) { %>
-                <% if(i <= Math.round(song.rating / 2)) { %>
-                  <i class="fas fa-star"></i>
-                <% } else { %>
-                  <i class="far fa-star"></i>
-                <% } %>
-              <% } %>
+                  <i class="fas fa-star">  <%= song.rating %></i>
             </div>
             <% if (song.genre) { %>
               <span class="genre-pill" style="font-size: 0.7rem;"><%= song.genre %></span>
@@ -116,14 +105,8 @@
               <% } %>
             </td>
             <td>
-              <div class="rating-stars">
-                <% for(let i = 1; i <= 5; i++) { %>
-                  <% if(i <= Math.round(song.rating / 2)) { %>
-                    <i class="fas fa-star"></i>
-                  <% } else { %>
-                    <i class="far fa-star"></i>
-                  <% } %>
-                <% } %>
+              <div class="rating-stars"> 
+                    <i class="fas fa-star">   <%= song.rating  %></i>
               </div>
             </td>
             <td>

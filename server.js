@@ -50,11 +50,17 @@ app.get("/", async (req, res) => {
     const allSongs = await client.query(
       "SELECT * FROM songs ORDER BY rating DESC"
     );
+    const result = await client.query(
+      "SELECT COUNT(DISTINCT artist) AS total_artists FROM songs;"
+    );
+    const totalArtists = result.rows[0].total_artists;
+
 
     res.render("index", {
       topGenres: topGenres.rows,
       topSongs: topSongs.rows,
-      allSongs: allSongs.rows
+      allSongs: allSongs.rows,
+      artists:totalArtists
     });
   } catch (error) {
     console.error("Error fetching homepage data:", error.message);
